@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 
 public class StringCalculator {
 
+    private String[] stringToCheck = {StringUtils.CR, StringUtils.LF, ";", ":"};
+
     public int add(String param) {
         if (StringUtils.isBlank(param)) {
             return 0;
@@ -13,7 +15,13 @@ public class StringCalculator {
         int totalOfAll = 0;
         StringTokenizer stringTokenizer = new StringTokenizer(param, ",");
         while (stringTokenizer.hasMoreTokens()) {
-            totalOfAll += Integer.valueOf(stringTokenizer.nextToken());
+            String numberToAdd = stringTokenizer.nextToken();
+            for(String checkValue : stringToCheck) {
+                if(StringUtils.containsAny(numberToAdd, checkValue)) {
+                    numberToAdd = numberToAdd.replaceAll(checkValue, "");
+                }
+            }
+            totalOfAll += Integer.valueOf(numberToAdd);
         }
         return totalOfAll;
     }
