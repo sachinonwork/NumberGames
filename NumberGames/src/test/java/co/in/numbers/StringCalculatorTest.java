@@ -33,9 +33,9 @@ public class StringCalculatorTest {
     @Test
     public void ignoreNegativeNumbersInParam() {
         try {
-            stringCalculator.add("2, -11,12, 1, -2");
+            stringCalculator.add("2, -11,12, 1, 2");
         } catch(Exception ex) {
-            assertTrue("Number not allowed: -11,-2".equalsIgnoreCase(ex.getMessage()));
+            assertTrue("Number not allowed: -11".equalsIgnoreCase(ex.getMessage()));
         }
     }
 }
