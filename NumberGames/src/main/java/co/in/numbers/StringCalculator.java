@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class StringCalculator {
 
     public int add(String param) {
-        if (StringUtils.isEmpty(param)) {
+        if (StringUtils.isBlank(param)) {
             return 0;
         }
         int totalOfAll = 0;
