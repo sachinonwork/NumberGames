@@ -17,4 +17,9 @@ public class StringCalculatorTest {
     public void shouldGiveSumOfAllNumberInList() {
         assertTrue(18 == stringCalculator.add("2,1,12,1,2"));
     }
+
+    @Test
+    public void shouldFailForIncorrectSumOfNumber() {
+        assertTrue(12 != stringCalculator.add("2,1,12,1,2"));
+    }
 }
