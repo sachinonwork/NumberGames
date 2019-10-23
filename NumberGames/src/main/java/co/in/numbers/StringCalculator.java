@@ -13,16 +13,21 @@ public class StringCalculator {
             return 0;
         }
         int totalOfAll = 0;
-        StringTokenizer stringTokenizer = new StringTokenizer(param, ",");
-        while (stringTokenizer.hasMoreTokens()) {
-            String numberToAdd = stringTokenizer.nextToken();
-            for(String checkValue : stringToCheck) {
-                if(StringUtils.containsAny(numberToAdd, checkValue)) {
-                    numberToAdd = numberToAdd.replaceAll(checkValue, "");
-                }
-            }
+        StringTokenizer paramStringToTotal = new StringTokenizer(param, ",");
+        while (paramStringToTotal.hasMoreTokens()) {
+            String numberToAdd = replaceStringInListIfAny(paramStringToTotal);
             totalOfAll += Integer.valueOf(numberToAdd);
         }
         return totalOfAll;
+    }
+
+    private String replaceStringInListIfAny(StringTokenizer stringToLookUp) {
+        String numberToAdd = stringToLookUp.nextToken();
+        for(String checkValue : stringToCheck) {
+            if(StringUtils.containsAny(numberToAdd, checkValue)) {
+                numberToAdd = numberToAdd.replaceAll(checkValue, "");
+            }
+        }
+        return numberToAdd;
     }
 }
